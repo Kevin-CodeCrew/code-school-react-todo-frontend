@@ -58,7 +58,8 @@ class App extends Component {
                 "isDone": "false"
             };
         const data = [...this.state.data, updatedData];
-        this.setState({data});
+        this.setState({data, text: ""});
+        //this.setState({text: ""});
 
         fetch('/api/todo/', {
             method: 'POST',
@@ -85,8 +86,9 @@ class App extends Component {
         return (
             <div>
             <h3>TODO</h3>
-            <TodoList data={this.state.data} onUpdateComment={this.onUpdateComment}
-        onDeleteComment={this.onDeleteComment} key={this.state.data._id}/>
+            <TodoList data={this.state.data}
+                      onUpdateComment={this.onUpdateComment}
+                      onDeleteComment={this.onDeleteComment}/>
         {/*<TodoList data={DATA} items={this.state.items} />*/}
     <form onSubmit={this.handleSubmit}>
     <label htmlFor="new-todo">
